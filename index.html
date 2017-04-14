@@ -2,7 +2,8 @@
 <html>
 <head>
   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-  <link href="./public/stylepage.css" rel='stylesheet' type="text/css" />
+  <link href="./public/css/stylepage.css" rel='stylesheet' type="text/css" />
+  <link href="./public/css/mediaquery.css" rel='stylesheet' type="text/css" />
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale = 1.0">
 </head>
@@ -39,8 +40,8 @@
       setTimeout(timer, 1000);
     }
     var game = function(){
-      var position = 10+Math.floor(Math.random()*80);
-      $('.gamewindow').append($('<div>').attr('class', 'balloon animate').css('left', position+'%'));
+      var position = 5+Math.floor(Math.random()*80);
+      $('.gamewindow').append($('<div>').attr('class', 'balloon animate').css('left', position+'%').append($('<img src="./public/img/100_115.png"/>')));
       if(time == 0){
         return;
       }

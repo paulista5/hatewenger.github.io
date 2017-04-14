@@ -1,0 +1,83 @@
+@media screen and (max-width: 1150px) {
+    .introduction{
+      width: 70%;
+    }
+    .final_page{
+      width: 70%;
+    }
+}
+@media screen and (max-width: 900px) {
+    .introduction{
+      width: 80%;
+    }
+    .gamewindow{
+      width: 90%;
+    }
+    .score{
+      font-size: 15px;
+
+    .timer{
+      font-size: 15px;
+    }
+    .balloon{
+      width: 105px;
+      height: 150px;
+    }
+    img{
+      width: 80px;
+      height: 92px;
+    }
+    .final_page{
+      width: 80%;
+    }
+}
+@media screen and (max-width: 600px) {
+    .introduction{
+      width: 90%;
+    }
+    .gamewindow{
+      width: 100%;
+    }
+    .score{
+      font-size: 12px;
+    }
+    .timer{
+      font-size: 12px;
+    }
+    .balloon{
+      width: 84px;
+      height: 120px;
+    }
+    img{
+      width: 70px;
+      height: 80px;
+    }
+    .final_page{
+      width: 90%;
+    }
+}
+@media screen and (max-width: 400px) {
+    .introduction{
+      width: 90%;
+    }
+    .gamewindow{
+      width: 100%;
+    }
+    .score{
+      font-size: 10px;
+    }
+    .timer{
+      font-size: 10px;
+    }
+    .balloon{
+      width: 56px;
+      height: 80px;
+    }
+    img{
+      width: 50px;
+      height: 58px;
+    }
+    .final_page{
+      width: 90%;
+    }
+}
