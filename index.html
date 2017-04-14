@@ -47,14 +47,16 @@
       setTimeout(game, 500);
     }
     $('.startbutton').on('click',function(){
-      $('.introduction').fadeOut(100, 'linear', function(){
-        $('.gamewindow').fadeIn(100, function(){
-          time = 60;
-          setTimeout(timer(), 500);
-          setTimeout(game(), 500);
-        });
+      $('.introduction').fadeOut(200, 'linear', function(){
+        $('.gamewindow').fadeIn(200,'linear', startgame);
       });
     });
+    var startgame = function(){
+      time = 60;
+      score = 0;
+      setTimeout(timer(), 500);
+      setTimeout(game(), 500);
+    };
     $('.gamewindow').on('mouseover','.balloon',function(){
       console.log('balloon click');
       $(this).css('display', 'none');
@@ -62,12 +64,18 @@
       $('.score').html('Score: '+ score);
     });
     var gameover = function(){
-      $('.gamewindow').fadeOut(100, 'linear', function(){
-        $('.final_page').fadeIn(100, function(){
+      $('.gamewindow').fadeOut(200, 'linear', function(){
+        $('.final_page').fadeIn(200,'linear', function(){
           $('.final_score').html(score);
         })
       })
-    }
+    };
+    $('.final_page').on('click','.restartgame', function(){
+      console.log('restart');
+      $('.final_page').fadeOut(200,'linear', function(){
+          $('.gamewindow').fadeIn(200, 'linear', startgame);
+      });
+    });
   });
   </script>
 </html>
