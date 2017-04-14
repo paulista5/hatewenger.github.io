@@ -1,0 +1,112 @@
+body{
+  background: rgb(50, 50, 50);
+  font-family: Lato;
+}
+.introduction{
+    width: 40%;
+    background: white;
+    margin: 25vh auto;
+    border: 1px solid white;
+}
+p{
+  display: block;
+  color: rgb(50, 50, 50);
+  text-align: center;
+  font-size: 30px;
+}
+.startbutton{
+  width: 50%;
+  padding: 2%;
+  color: white;
+  background: #004D40;
+  border: 1px solid #004D40;
+  margin: 10px auto;
+  border-radius: 4px;
+  display: block;
+  font-family: Lato;
+}
+.gamewindow{
+  background: white;
+  height: 100vh;
+  width: 80%;
+  margin: 0px auto;
+  border: 1px solid white;
+  display: none;
+}
+.timer{
+  width: 10%;
+  background: #009688;
+  color: white;
+  border: 1px solid #009688;
+  text-align: center;
+  float: left;
+  margin: 10px;
+  font-size: 18px;
+}
+.score{
+  width: 10%;
+  background: #009688;
+  color: white;
+  border: 1px solid #009688;
+  text-align: center;
+  float: right;
+  margin: 10px;
+  font-size: 18px;
+}
+
+@keyframes slide {
+  0%{
+    top: 100vh;
+    opacity: 1;
+  }
+  90%{
+    top: 15vh;
+    opacity: 1;
+  }
+  100%{
+    top: 10vh;
+    opacity: 0;
+  }
+}
+.balloon{
+  display:block;
+  width: 126px;
+  height: 180px;
+  position: absolute;
+  opacity: 0;
+  background-color: red;
+  -webkit-border-radius:108px 108px 72px 72px / 63px 63px 63px 63px ;
+  border-radius: 60% 60% 40% 40% / 50% 50% 50% 50% ;
+  cursor: pointer;
+}
+.animate{
+  animation-name: slide;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+}
+.final_page{
+  width: 40%;
+  background: white;
+  margin: 25vh auto;
+  border: 1px solid white;
+  display:none;
+}
+h3{
+  text-align: center;
+}
+.final_score{
+  text-align: center;
+  display: block;
+  font-size: 18px;
+}
+.restartgame{
+  width: 50%;
+  padding: 2%;
+  color: white;
+  background: #004D40;
+  border: 1px solid #004D40;
+  margin: 10px auto;
+  display: block;
+  font-family: Lato;
+  border-radius: 4px;
+}

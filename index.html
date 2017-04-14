@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <link href="./public/stylepage.css" rel='stylesheet' type="text/css" />
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale = 1.0">
+</head>
+  <div class="introduction">
+    <p class="comment">
+      Hate Arsene Wenger. This is the game!!!
+    </p>
+    <button class="startbutton">Start Game</button>
+  </div>
+  <div class="gamewindow">
+    <div class="timer">
+    </div>
+    <div class="score">
+      Score: 0
+    </div>
+  </div>
+  <div class="final_page">
+    <h3>Score</h3>
+    <div class="final_score">
+    </div>
+    <button class="restartgame">Restart</button>
+  </div>
+  <script>
+  $(function(){
+    var time = 0;
+    var score = 0;
+    var timer = function(){
+      $('.timer').html(time);
+      time--;
+      if(time == 0){
+        gameover();
+        return;
+      }
+      setTimeout(timer, 1000);
+    }
+    var game = function(){
+      var position = 10+Math.floor(Math.random()*80);
+      $('.gamewindow').append($('<div>').attr('class', 'balloon animate').css('left', position+'%'));
+      if(time == 0){
+        return;
+      }
+      setTimeout(game, 500);
+    }
+    $('.startbutton').on('click',function(){
+      $('.introduction').fadeOut(100, 'linear', function(){
+        $('.gamewindow').fadeIn(100, function(){
+          time = 60;
+          setTimeout(timer(), 500);
+          setTimeout(game(), 500);
+        });
+      });
+    });
+    $('.gamewindow').on('mouseover','.balloon',function(){
+      console.log('balloon click');
+      $(this).css('display', 'none');
+      score++;
+      $('.score').html('Score: '+ score);
+    });
+    var gameover = function(){
+      $('.gamewindow').fadeOut(100, 'linear', function(){
+        $('.final_page').fadeIn(100, function(){
+          $('.final_score').html(score);
+        })
+      })
+    }
+  });
+  </script>
+</html>
