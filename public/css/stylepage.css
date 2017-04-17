@@ -10,9 +10,15 @@ body{
 }
 p{
   display: block;
+  padding: 2px;
   color: rgb(50, 50, 50);
   text-align: center;
   font-size: 30px;
+}
+.nusers{
+  text-align: center;
+  padding: 2px;
+  font-size: 15px;
 }
 .startbutton{
   width: 50%;
@@ -108,6 +114,10 @@ h3{
   text-align: center;
   display: block;
   font-size: 18px;
+}
+.highscore{
+  padding: 2px;
+  font-size: 15px;
 }
 .restartgame{
   width: 50%;

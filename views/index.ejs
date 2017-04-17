@@ -1,16 +1,21 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-  <link href="./public/css/stylepage.css" rel='stylesheet' type="text/css" />
-  <link href="./public/css/mediaquery.css" rel='stylesheet' type="text/css" />
+  <link href="/css/stylepage.css" rel='stylesheet' type="text/css" />
+  <link href="/css/mediaquery.css" rel='stylesheet' type="text/css" />
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale = 1.0">
 </head>
+<body>
   <div class="introduction">
     <p class="comment">
       Hate Arsene Wenger. This is the game!!!
     </p>
+    <h3>#Number of Games Played</h3>
+    <p class="nusers">
+    <strong><%= users %></strong>
+  </p>
     <button class="startbutton">Start Game</button>
   </div>
   <div class="gamewindow">
@@ -24,12 +29,19 @@
     <h3>Score</h3>
     <div class="final_score">
     </div>
+    <h3>High Score</h3>
+    <p class="highscore">
+
+    </p>
     <button class="restartgame">Restart</button>
   </div>
   <script>
   $(function(){
     var time = 0;
     var score = 0;
+    var time_int = 500;
+    var score_pos = 50;
+    var anim_dur = 2.0;
     var timer = function(){
       $('.timer').html(time);
       time--;
@@ -41,11 +53,11 @@
     }
     var game = function(){
       var position = 5+Math.floor(Math.random()*80);
-      $('.gamewindow').append($('<div>').attr('class', 'balloon animate').css('left', position+'%').append($('<img src="./public/img/100_115.png"/>')));
+      $('.gamewindow').append($('<div>').attr('class', 'balloon animate').css('left', position+'%').append($('<img src="/img/100_115.png"/>')));
       if(time == 0){
         return;
       }
-      setTimeout(game, 500);
+      setTimeout(game, time_int);
     }
     $('.startbutton').on('click',function(){
       $('.introduction').fadeOut(200, 'linear', function(){
@@ -59,24 +71,38 @@
       setTimeout(game(), 500);
     };
     $('.gamewindow').on('mouseover','.balloon',function(){
-      console.log('balloon click');
       $(this).css('display', 'none');
       score++;
+      if(score>score_pos && time_int>100 && anim_dur > 0.5){
+        time_int = time_int - 100;
+        anim_dur = anim_dur - 0.5;
+        $('.animate').css('animation-duration', anim_dur+'s');
+        score_pos = score_pos + 50;
+      }
       $('.score').html('Score: '+ score);
     });
     var gameover = function(){
       $('.gamewindow').fadeOut(200, 'linear', function(){
-        $('.final_page').fadeIn(200,'linear', function(){
-          $('.final_score').html(score);
-        })
-      })
+        $.ajax({
+          type: 'POST',
+          url: '/',
+          data: {
+            "userscore" : score,
+          },
+          dataType: 'json',
+          success: function(data){
+            $('.final_page').fadeIn(200,'linear', function(){
+              $('.final_score').html(score);
+              $('.highscore').html(data.highScore);
+            });
+          }
+        });
+      });
     };
     $('.final_page').on('click','.restartgame', function(){
-      console.log('restart');
-      $('.final_page').fadeOut(200,'linear', function(){
-          $('.gamewindow').fadeIn(200, 'linear', startgame);
-      });
+      window.location.href = '/';
     });
   });
   </script>
+</body>
 </html>
