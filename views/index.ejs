@@ -5,12 +5,14 @@
   <link href="/css/stylepage.css" rel='stylesheet' type="text/css" />
   <link href="/css/mediaquery.css" rel='stylesheet' type="text/css" />
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <meta name="viewport" content="width=device-width, initial-scale = 1.0">
 </head>
 <body>
   <div class="introduction">
+    <h1>#WENGEROUT</h1>
     <p class="comment">
-      Hate Arsene Wenger. This is the game!!!
+        Burst the 'Wenger' balloons to show how much you want Wenger out of Arsenal!!
     </p>
     <h3>#Number of Games Played</h3>
     <p class="nusers">
@@ -33,6 +35,9 @@
     <p class="highscore">
 
     </p>
+    <div class="social_media">
+      <a href="#" class="fa fa-twitter"></a>
+    </div>
     <button class="restartgame">Restart</button>
   </div>
   <script>
@@ -94,6 +99,7 @@
             $('.final_page').fadeIn(200,'linear', function(){
               $('.final_score').html(score);
               $('.highscore').html(data.highScore);
+              $('.fa-twitter').attr('href', 'https://twitter.com/share?text=Score:%20'+score+'%20TheWengerOutGame;hashtags=wengerout" target="_blank')
             });
           }
         });
