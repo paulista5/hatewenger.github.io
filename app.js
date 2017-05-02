@@ -13,8 +13,8 @@ app.get('/', function(req, res){
 });
 app.post('/', urlEncoderParser, function(req, res){
   var score = req.body.userscore;
-  if(highScore < score){
-    highScore = score;
+  if(highScore < Number(score)){
+    highScore = Number(score);
   }
   res.json({users: users, highScore: highScore});
 });
